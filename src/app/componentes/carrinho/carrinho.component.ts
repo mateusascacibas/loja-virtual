@@ -1,3 +1,4 @@
+import { CarrinhoService } from './../../servicos/carrinho.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarrinhoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private carrinhoService: CarrinhoService
+    ) { }
 
   ngOnInit(): void {
   }
+  finalizarCompra(){
 
+  }
+
+  get itens(){
+    return this.carrinhoService.itens;
+  }
+
+  get total(){
+    return this.carrinhoService.total;
+  }
 }
