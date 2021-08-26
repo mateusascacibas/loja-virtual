@@ -1,37 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
-    <a class="navbar-brand" [routerLink] = "['']">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['']">
       <img src="assets/img/mao.png" width="30" height="30" class="d-inline-block align-top" alt="">
       E-Commerce
     </a>
     <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Buscar produto..."
-          aria-label="Filtro"
-        />
-        <div class="dropdown">
-            <button
-              class="btn btn-primary dropdown-toggle"
-              type="button"
-              id="dropdownCarrinho"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i class="bi bi-cart"></i>
-              <span class="badge rounded-pill bg-dark">3</span>
-            </button>
-            <ul
-              class="dropdown-menu dropdown-menu-primary dropdown-menu-end"
-              aria-labelledby="dropdownCarrinho"
-            >
-              <li class="dropdown-item">R$100,00 - Produto 1</li>
-              <li class="dropdown-item">R$200,00 - Produto 3</li>
-              <li class="dropdown-item">R$150,00 - Produto 2</li>
-            </ul>
-          </div>
-      </form>
-    </div>
-  </nav>
-  <router-outlet></router-outlet>
+      <input class="form-control me-2" type="search" placeholder="Buscar produto..." aria-label="Filtro" />
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownCarrinho" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="bi bi-cart"></i>
+          <span class="badge rounded-pill bg-dark">{{quantidade}}</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-primary dropdown-menu-end" aria-labelledby="dropdownCarrinho">
+          <li class="dropdown-item" *ngIf="quantidade === 0">Carrinho vazio</li>
+          <li class="dropdown-item" *ngFor="let item of itens">
+            {{item.quantidade}}x - {{ item.produto.preco | currency: "BRL" }} - {{ item.produto.nome}}</li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</nav>
+<router-outlet></router-outlet>

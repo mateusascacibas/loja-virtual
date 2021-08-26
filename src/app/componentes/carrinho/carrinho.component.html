@@ -1,1 +1,45 @@
-<p>carrinho works!</p>
+<div class="container-fluid">
+    <br />
+<div class="row">
+    <div class="col">
+        <table class="table table-striped table-hover">
+            <tbody>
+                <tr class="table-dark">
+                    <td colspan="3" class="titulo">Carrinho de compras</td>
+                </tr>
+                <tr *ngIf="itens.length === 0">
+                    <td colspan="3">Carrinho vazio.</td>
+                </tr>
+                <tr *ngFor="let item of itens">
+                    <td class="td-img">
+                        <img src="assets/img/{{item.produto.fotos[0]}}" class="card-img-top img-thumbnail" [alt]="item.produto.nome" />
+                    </td>
+                    <td class="td-col">
+                        {{item.produto.nome}}
+                    </td>
+                    <td class="td-col td-preco">
+                        {{item.quantidade}}x - {{ item.produto.preco | currency: "BRL" }}
+                    </td>
+                </tr>
+                <tr class="table-dark" *ngIf="itens.length > 0">
+                    <td colspan="3" class="total">
+                      {{ total | currency: "BRL" }}
+                    </td>
+                  </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center" *ngIf="itens.length > 0">
+        <button type="button" class="btn btn-lg btn-success" (click)="finalizarCompra()"  >
+            <i class="bi bi-cart-check"></i> Finalizar compra
+        </button>
+    </div>
+    <div class="col text-center" >
+        <button type="button" class="btn btn-lg btn-light" [routerLink]="['']"  >
+            <i class="bi bi-bag"></i> Continuar Comprando
+        </button>
+    </div>
+</div>
+</div>
