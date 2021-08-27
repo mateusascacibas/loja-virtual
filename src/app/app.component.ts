@@ -1,5 +1,6 @@
 import { CarrinhoService } from './servicos/carrinho.service';
 import { Component } from '@angular/core';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ export class AppComponent {
   
   constructor( private carrinhoService: CarrinhoService){
   }
+
+
   get itens(){
     return this.carrinhoService.itens;
   }
