@@ -1,9 +1,11 @@
 
 .td-img {
   width: 100px;
+  cursor: pointer;
 }
 .td-col {
   vertical-align: middle;
+  cursor: pointer;
 }
 .td-preco {
   text-align: right;

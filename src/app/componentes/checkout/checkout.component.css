@@ -1,0 +1,36 @@
+
+.td-img {
+    width: 100px;
+ 
+  }
+  .td-col {
+    vertical-align: middle;
+   
+  }
+  .td-preco {
+    text-align: right;
+    font-weight: bold;
+    padding-right: 20px;
+  }
+  
+  .total {
+    text-align: right;
+    font-weight: bold;
+    padding-right: 20px;
+    font-size: 20px;
+  }
+  
+  .titulo {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .txt-input {
+    margin-top: 10px;
+  }
+  
+  .btn-pagar {
+    margin-top: 10px;
+    width: 100%;
+  }
+  

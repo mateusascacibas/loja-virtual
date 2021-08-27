@@ -14,9 +14,13 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-primary dropdown-menu-end" aria-labelledby="dropdownCarrinho">
           <li class="dropdown-item" *ngIf="quantidade === 0">Carrinho vazio</li>
-          <li class="dropdown-item" *ngFor="let item of itens">
-            {{item.quantidade}}x - {{ item.produto.preco | currency: "BRL" }} - {{ item.produto.nome}}</li>
+          <li class="dropdown-item" *ngFor="let item of itens"  [routerLink]="['/produto/' + item.produto.id]">
+           {{ item.produto.preco | currency: "BRL" }} - ({{item.quantidade}}x) - {{ item.produto.nome}}</li>
+            <li *ngIf="quantidade > 0"><hr class="dropdown-divider" /></li>
+          <li class="dropdown-item" *ngIf="quantidade > 0" [routerLink]="['/carrinho']">
+            <strong >TOTAL: {{ total | currency: "BRL" }}</strong>
         </ul>
+        
       </div>
     </form>
   </div>
