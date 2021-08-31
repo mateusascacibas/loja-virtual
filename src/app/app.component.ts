@@ -11,7 +11,7 @@ export class AppComponent {
   
   constructor( private carrinhoService: CarrinhoService){
   }
-
+ 
 
   get itens(){
     return this.carrinhoService.itens;

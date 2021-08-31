@@ -1,5 +1,7 @@
 <div class="container-fluid">
 <!-- Carrosel -->
+<input class="form-control me-2" type="search" (keyup)="pesquisar($event)" placeholder="Buscar produto..." aria-label="Filtro" />
+
 <div id="carouselBanner" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button
@@ -93,3 +95,21 @@
     </div>
   </div>
 </div>
+
+<nav>
+  <ul class="pagination justify-content-center">
+   <li class ="page-item" [ngClass] = "{disabled: pagina === 0}">
+    <a class="page-link" href="#" (click)= "paginar($event, 0)">
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+   </li>
+    <li class="page-item" [ngClass] = "{'active': pag === pagina}" *ngFor= "let pag of obterPaginas()">
+      <a ng-class="(pag === currentPage) ? 'active': 'sucess'" class="page-link " href="#" (click)= "paginar($event, pag)">{{ pag + 1 }}</a>
+    </li>
+    <li class="page-item"  [ngClass] = "{disabled: pagina === numeroPaginas() - 1}">
+      <a class="page-link" href="#" (click)= "paginar($event, numeroPaginas() - 1)">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

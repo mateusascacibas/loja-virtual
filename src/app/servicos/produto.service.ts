@@ -4,6 +4,7 @@ import { Produto } from '../models/produto.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProdutoService {
   produtos: Produto[] = [
     new Produto(2, "Tênis Nike Air Force", 500, ["AirForce.jpg"], ["O brilho perdura no Nike Air Force 1 '07, o tênis original que dá um toque de inovação naquilo que você conhece bem: sobreposições costuradas e duráveis, acabamentos simples e a quantidade perfeita de brilho para fazer você se destacar."]),
@@ -16,9 +17,42 @@ export class ProdutoService {
     
   constructor() { }
 
-  listarTodos(): Produto[]{
-    return this.produtos;
+  numeroCompra: string = '';
+  public qtdProdutos = 0;
+  NomeCompra = "";
+  PrecoCompra = 0;
+  QuantidadeCompra = 1;
+  idProduto: number = 0;
+  produto: any;
+  prodCompra: any;
+  public qtd: number | undefined;
+  private readonly total_elem_pag = 5;
+
+  listarPaginado(pagina = 0, filtro = ""): Produto[] {
+    let produto = this.produtos;
+    //Paginação
+    produto = this.filtrar(produto, filtro);
+    const indice = pagina * this.total_elem_pag;
+    produto = produto.slice(indice,indice + this.total_elem_pag);
+    return produto;
+ }
+
+ private filtrar(produtos: Produto[], filtro: string): Produto[] {
+  if (filtro === '') {
+    return produtos;
   }
+  return produtos.filter((produtos: Produto) =>
+  produtos.nome.toLowerCase().includes(filtro.toLowerCase()));
+}
+
+ numeroPaginas(filtro: string){
+  const tarefas = this.filtrar(this.listarTodosProdutos(), filtro);
+  return Math.ceil(tarefas.length / this.total_elem_pag);
+}
+listarTodosProdutos(): Produto[]{
+  return this.produtos;
+}
+
 
   listarId(id: number): Produto| undefined{
     return this.produtos.find(produto => produto.id == id);
