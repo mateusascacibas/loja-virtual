@@ -1,6 +1,7 @@
 import { CarrinhoService } from './../../servicos/carrinho.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -20,7 +21,7 @@ export class CheckoutComponent implements OnInit {
     
   });
 
-  constructor(private fb: FormBuilder, private carrinhoService: CarrinhoService) { }
+  constructor(private fb: FormBuilder, private carrinhoService: CarrinhoService, private router: Router) { }
   
   get itens(){
     return this.carrinhoService.itens;
@@ -34,7 +35,10 @@ export class CheckoutComponent implements OnInit {
 
   pagar($event: any) {
     $event.preventDefault();
-    alert(JSON.stringify(this.form.value));
+
+    this.carrinhoService.liberar();
+    this.router.navigate(['/']);
+    alert("Compra finalizada com sucesso.");
   }
 
 }

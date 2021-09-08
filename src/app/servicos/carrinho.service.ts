@@ -8,6 +8,7 @@ import { Produto } from '../models/produto.model';
 })
 export class CarrinhoService {
   private carrinho: Carrinho = new Carrinho([]);
+
   constructor() { 
     if(localStorage['carrinho']){
       this.carrinho.itens = JSON.parse(localStorage['carrinho']);
@@ -51,7 +52,9 @@ export class CarrinhoService {
     return this.carrinho.itens.map((item: ItemCarrinho) => item.quantidade)
     .reduce((acc: number, quantidade: number) => acc + quantidade);
   }
-
+  liberar(){
+    this.carrinho.itens = [];
+  }
   get itens(){
     return this.carrinho.itens;
   }
