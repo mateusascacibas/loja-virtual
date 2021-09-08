@@ -26,7 +26,7 @@ export class ProdutoService {
   produto: any;
   prodCompra: any;
   public qtd: number | undefined;
-  private readonly total_elem_pag = 5;
+  private readonly total_elem_pag = 3;
 
   listarPaginado(pagina = 0, filtro = ""): Produto[] {
     let produto = this.produtos;

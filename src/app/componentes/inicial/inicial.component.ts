@@ -35,7 +35,7 @@ export class InicialComponent implements OnInit {
 
    adicionarCarrinho(produto: Produto){
      this.carrinhoService.adicionar(produto);
-    this.router.navigate(['/carrinho']);
+     this.router.navigate(['/carrinho']);
   }
 
 
